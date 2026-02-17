@@ -778,10 +778,25 @@
 .club-san-jorge .csj-plan-card__cta {
     margin: 0 1rem 1rem;
     margin-top: auto;
+    padding-top: 0.25rem;
 }
 
 .club-san-jorge .csj-plan-card__cta .csj-btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
     width: 100%;
+    min-height: 48px;
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+    text-decoration: none;
+    color: var(--csj-white);
+    box-sizing: border-box;
+}
+
+.club-san-jorge .csj-plan-card__cta .csj-btn:hover,
+.club-san-jorge .csj-plan-card__cta .csj-btn:focus {
+    color: var(--csj-white);
 }
 
 @media (min-width: 600px) {
