@@ -1,0 +1,45 @@
+@* Tarjeta de un plan (SOLID - S: solo presenta un Plan). Recibe el modelo como parámetro. *@
+@inject IPlanesConfig Config
+
+<article class="csj-plan-card" role="listitem" id="plan-@Plan.Id">
+    <div class="csj-plan-card__header csj-plan-card__header--@(Plan.HeaderVariant == "red" ? "red" : "green")">
+        @if (!string.IsNullOrEmpty(Plan.Subtitle))
+        {
+            <span class="csj-plan-card__subtitle">@Plan.Subtitle</span>
+        }
+        <span class="csj-plan-card__title">@Plan.Title</span>
+    </div>
+    <div class="csj-plan-card__image-wrap">
+        <img class="csj-plan-card__image"
+             src="@Plan.ImageUrl"
+             alt="@Plan.ImageAlt"
+             width="280"
+             height="160"
+             loading="lazy" />
+    </div>
+    <div class="csj-plan-card__price">
+        <span class="csj-plan-card__price-tag">
+            @if (!string.IsNullOrEmpty(Plan.PriceSmall))
+            {
+                <small>@Plan.PriceSmall</small> @Plan.PriceLabel
+            }
+            else
+            {
+                @Plan.PriceLabel
+            }
+        </span>
+    </div>
+    <div class="csj-plan-card__cta">
+        <a href="@(string.IsNullOrEmpty(Plan.WhatsappMessage) ? Config.WhatsappPlansUrl : WhatsAppHelper.BuildApiWhatsAppUrl(Config.WhatsappPlansPhone, Plan.WhatsappMessage))"
+           class="csj-btn"
+           target="_blank"
+           rel="noopener noreferrer">
+            HABLAR POR WHATSAPP
+        </a>
+    </div>
+</article>
+
+@code {
+    [Parameter, EditorRequired]
+    public Plan Plan { get; set; } = null!;
+}

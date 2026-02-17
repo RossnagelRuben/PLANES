@@ -1,0 +1,1046 @@
+/*
+ * Club San Jorge - Estilos globales para la landing (SOLID - S: solo presentación).
+ * Alcance: solo dentro de .club-san-jorge para no afectar el resto de la app.
+ */
+
+/* Variables de diseño (única fuente de verdad) */
+.club-san-jorge {
+    --csj-primary: #c41e3a;
+    --csj-primary-dark: #9e1830;
+    --csj-secondary: #2d7a3e;
+    --csj-secondary-dark: #1e5c2b;
+    --csj-white: #ffffff;
+    --csj-gray-dark: #2c2c2c;
+    --csj-gray: #555;
+    --csj-gray-light: #f5f5f5;
+    --csj-radius: 12px;
+    --csj-radius-sm: 8px;
+    --csj-shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --csj-max-width: 1200px;
+    font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--csj-gray-dark);
+    background: var(--csj-white);
+    margin: 0;
+    width: 100%;
+    max-width: 100vw;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.club-san-jorge img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+.club-san-jorge a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* Header */
+.club-san-jorge .csj-header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--csj-white);
+    border-bottom: 1px solid var(--csj-gray-light);
+    padding: 0.75rem 1rem;
+    width: 100%;
+    box-sizing: border-box;
+}
+
+.club-san-jorge .csj-header__inner {
+    max-width: var(--csj-max-width);
+    margin: 0 auto;
+    padding: 0 0.5rem;
+    box-sizing: border-box;
+}
+
+.club-san-jorge .csj-logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+    min-width: 0;
+}
+
+.club-san-jorge .csj-logo__icon {
+    width: 44px;
+    height: 44px;
+    background: var(--csj-primary);
+    color: var(--csj-white);
+    font-weight: bold;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--csj-radius-sm);
+}
+
+.club-san-jorge .csj-logo__img {
+    width: 44px;
+    height: 44px;
+    min-width: 44px;
+    min-height: 44px;
+    object-fit: contain;
+    border-radius: var(--csj-radius-sm);
+    flex-shrink: 0;
+    background: var(--csj-gray-light);
+}
+
+.club-san-jorge .csj-logo__text {
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+}
+
+.club-san-jorge .csj-logo__name {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--csj-gray-dark);
+    line-height: 1.2;
+}
+
+.club-san-jorge .csj-logo__tagline {
+    font-size: 0.8rem;
+    color: var(--csj-gray);
+}
+
+/* ========== SECCIÓN SUSCRIBITE (primera: título + sorteo + video) ========== */
+.club-san-jorge .csj-section-suscibite {
+    padding: 2.5rem 1rem 2rem;
+    background: var(--csj-gray-light);
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.club-san-jorge .csj-section-suscibite__inner {
+    width: 100%;
+    max-width: var(--csj-max-width);
+    margin: 0 auto;
+    box-sizing: border-box;
+}
+
+.club-san-jorge .csj-section-suscibite__row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    gap: 1.5rem;
+}
+
+.club-san-jorge .csj-section-suscibite__col-text {
+    flex: 1 1 100%;
+    min-width: 0;
+}
+
+.club-san-jorge .csj-section-suscibite__title {
+    color: var(--csj-secondary);
+    font-weight: 700;
+    margin: 0 0 1.25rem;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    word-wrap: break-word;
+}
+
+.club-san-jorge .csj-section-suscibite__intro {
+    margin: 0 0 1.25rem;
+    color: var(--csj-gray-dark);
+    font-size: 1rem;
+}
+
+.club-san-jorge .csj-sorteo-box {
+    background: var(--csj-white);
+    border: 2px solid var(--csj-secondary);
+    border-radius: var(--csj-radius);
+    padding: 1rem;
+    text-align: center;
+    box-sizing: border-box;
+}
+
+.club-san-jorge .csj-sorteo-box__premios {
+    display: flex;
+    justify-content: center;
+    align-items: stretch;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+}
+
+.club-san-jorge .csj-sorteo-box__premio {
+    flex: 1 1 0;
+    min-width: 0;
+    padding: 0.5rem;
+    border-radius: var(--csj-radius-sm);
+}
+
+.club-san-jorge .csj-sorteo-box__premio--first {
+    background: var(--csj-secondary);
+    color: var(--csj-white);
+}
+
+.club-san-jorge .csj-sorteo-box__premio--other {
+    background: #e0e0e0;
+    color: var(--csj-gray-dark);
+}
+
+.club-san-jorge .csj-sorteo-box__numero {
+    font-weight: 700;
+    font-size: 1.25rem;
+    margin: 0 0 0.2rem;
+}
+
+.club-san-jorge .csj-sorteo-box__label {
+    font-size: 0.75rem;
+    margin: 0;
+}
+
+.club-san-jorge .csj-sorteo-box__footer {
+    border-top: 1px solid var(--csj-gray-light);
+    padding-top: 1rem;
+}
+
+.club-san-jorge .csj-sorteo-box__fecha {
+    margin: 0 0 0.5rem;
+    font-size: 0.95rem;
+    color: #626262;
+}
+
+.club-san-jorge .csj-sorteo-box__fecha-valor {
+    font-weight: 600;
+}
+
+.club-san-jorge .csj-sorteo-box__proximo {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.3rem;
+    margin: 0 0 1rem;
+    font-size: 0.95rem;
+    color: var(--csj-secondary);
+}
+
+.club-san-jorge .csj-sorteo-box__calendar {
+    display: inline-flex;
+}
+
+.club-san-jorge .csj-sorteo-box__calendar svg {
+    width: 28px;
+    height: 28px;
+}
+
+.club-san-jorge .csj-sorteo-box__proximo-valor {
+    font-weight: 600;
+    font-size: 1.1rem;
+}
+
+.club-san-jorge .csj-sorteo-box__cta {
+    display: block;
+    width: 75%;
+    max-width: 280px;
+    margin: 0 auto;
+    padding: 0.6rem 1rem;
+    text-align: center;
+    font-weight: 500;
+    color: var(--csj-white);
+    background: var(--csj-secondary);
+    border: 2px solid var(--csj-secondary);
+    border-radius: 100px;
+    transition: background 0.2s, color 0.2s;
+}
+
+.club-san-jorge .csj-sorteo-box__cta:hover {
+    background: var(--csj-secondary-dark);
+    color: var(--csj-white);
+}
+
+.club-san-jorge .csj-section-suscibite__col-video {
+    flex: 1 1 100%;
+    min-width: 0;
+    width: 100%;
+}
+
+.club-san-jorge .csj-section-suscibite__video-label {
+    margin: 0 0 0.75rem;
+    font-size: 1rem;
+    font-weight: 600;
+    color: var(--csj-secondary);
+}
+
+/* Móvil: sección suscribite más legible, video SIEMPRE visible */
+@media (max-width: 600px) {
+    .club-san-jorge .csj-section-suscibite {
+        padding: 1.5rem 0.75rem 2rem;
+        overflow-x: hidden;
+        overflow-y: visible;
+    }
+    .club-san-jorge .csj-section-suscibite__row {
+        display: flex;
+        flex-direction: column;
+        gap: 1.25rem;
+    }
+    .club-san-jorge .csj-section-suscibite__title {
+        font-size: 1.4rem;
+        margin: 0 0 0.75rem;
+    }
+    .club-san-jorge .csj-section-suscibite__intro {
+        font-size: 0.95rem;
+        margin: 0 0 1rem;
+    }
+    .club-san-jorge .csj-sorteo-box {
+        padding: 0.75rem;
+    }
+    .club-san-jorge .csj-sorteo-box__premios {
+        gap: 0.35rem;
+        margin-bottom: 0.75rem;
+    }
+    .club-san-jorge .csj-sorteo-box__premio {
+        padding: 0.4rem 0.25rem;
+    }
+    .club-san-jorge .csj-sorteo-box__numero {
+        font-size: 1rem;
+    }
+    .club-san-jorge .csj-sorteo-box__label {
+        font-size: 0.65rem;
+    }
+    .club-san-jorge .csj-sorteo-box__footer {
+        padding-top: 0.75rem;
+    }
+    .club-san-jorge .csj-sorteo-box__fecha,
+    .club-san-jorge .csj-sorteo-box__proximo {
+        font-size: 0.85rem;
+    }
+    .club-san-jorge .csj-sorteo-box__calendar svg {
+        width: 22px;
+        height: 22px;
+    }
+    .club-san-jorge .csj-sorteo-box__proximo-valor {
+        font-size: 1rem;
+    }
+    .club-san-jorge .csj-sorteo-box__cta {
+        width: 100%;
+        max-width: none;
+        padding: 0.75rem 1rem;
+    }
+    /* Video visible en móvil: altura mínima y contenedor que no colapse */
+    .club-san-jorge .csj-section-suscibite__col-video {
+        flex: 0 0 auto;
+        width: 100%;
+        min-height: 200px;
+    }
+    .club-san-jorge .csj-video-wrap {
+        min-height: 200px;
+        aspect-ratio: 16 / 9;
+    }
+    .club-san-jorge .csj-video-wrap__iframe {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        border: 0;
+    }
+}
+
+.club-san-jorge .csj-video-wrap {
+    position: relative;
+    width: 100%;
+    padding-bottom: 56.25%;
+    height: 0;
+    overflow: hidden;
+    border-radius: var(--csj-radius);
+    background: var(--csj-gray-dark);
+    box-shadow: var(--csj-shadow);
+}
+
+.club-san-jorge .csj-video-wrap__iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    border: 0;
+    border-radius: var(--csj-radius);
+}
+
+/* Desde 768px: texto y sorteo al lado del video */
+@media (min-width: 768px) {
+    .club-san-jorge .csj-section-suscibite {
+        padding: 2.5rem 1.5rem 2.5rem;
+    }
+
+    .club-san-jorge .csj-section-suscibite__inner {
+        padding: 0 0.5rem;
+    }
+
+    .club-san-jorge .csj-section-suscibite__row {
+        flex-direction: row;
+        align-items: flex-start;
+        gap: 2rem;
+    }
+
+    .club-san-jorge .csj-section-suscibite__col-text {
+        flex: 0 0 380px;
+        max-width: 42%;
+        min-width: 0;
+        padding-right: 0;
+    }
+
+    .club-san-jorge .csj-section-suscibite__col-video {
+        flex: 1 1 0;
+        min-width: 0;
+        width: auto;
+    }
+
+    .club-san-jorge .csj-section-suscibite__title {
+        font-size: 1.75rem;
+    }
+
+    .club-san-jorge .csj-section-suscibite__video-label {
+        margin: 0 0 0.5rem;
+        font-size: 1.1rem;
+    }
+}
+
+@media (min-width: 992px) {
+    .club-san-jorge .csj-section-suscibite {
+        padding: 3rem 1.5rem 2.5rem;
+    }
+
+    .club-san-jorge .csj-section-suscibite__col-text {
+        flex: 0 0 400px;
+        max-width: 38%;
+    }
+
+    .club-san-jorge .csj-section-suscibite__row {
+        gap: 2.5rem;
+    }
+
+    .club-san-jorge .csj-section-suscibite__title {
+        font-size: 2rem;
+    }
+}
+
+/* Botones */
+.club-san-jorge .csj-btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--csj-radius);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+    background: var(--csj-secondary);
+    color: var(--csj-white);
+}
+
+.club-san-jorge .csj-btn:hover,
+.club-san-jorge .csj-btn:focus {
+    background: var(--csj-secondary-dark);
+    color: var(--csj-white);
+}
+
+.club-san-jorge .csj-btn:active {
+    transform: scale(0.98);
+}
+
+.club-san-jorge .csj-btn--small {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+}
+
+.club-san-jorge .csj-btn__icon {
+    width: 20px;
+    height: 20px;
+    background: currentColor;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'/%3E%3C/svg%3E") center/contain no-repeat;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24'%3E%3Cpath fill='currentColor' d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+/* Hero */
+.club-san-jorge .csj-hero {
+    position: relative;
+    background: var(--csj-primary);
+    color: var(--csj-white);
+    padding: 2rem 1rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    min-height: 320px;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.club-san-jorge .csj-hero__badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, var(--csj-primary) 50%, var(--csj-secondary) 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    text-align: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    line-height: 1.15;
+    padding: 0.6rem 0.5rem 0.4rem;
+    box-shadow: var(--csj-shadow);
+    box-sizing: border-box;
+}
+
+.club-san-jorge .csj-hero__badge > span {
+    display: block;
+    width: 100%;
+    text-align: center;
+}
+
+.club-san-jorge .csj-hero__badge-bottom {
+    font-size: 0.55rem;
+    line-height: 1.2;
+}
+
+.club-san-jorge .csj-hero__content {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+    padding-right: 0.5rem;
+}
+
+.club-san-jorge .csj-hero__title {
+    margin: 0 0 1.25rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+    word-wrap: break-word;
+}
+
+.club-san-jorge .csj-hero__image-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.club-san-jorge .csj-hero__image {
+    max-height: 260px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+}
+
+/* Móvil: badge más pequeño y contenido con espacio para que no se corte */
+@media (max-width: 480px) {
+    .club-san-jorge .csj-hero {
+        padding: 1.5rem 0.75rem 2.5rem;
+        min-height: auto;
+    }
+    .club-san-jorge .csj-hero__badge {
+        width: 72px;
+        height: 72px;
+        top: 0.75rem;
+        right: 0.75rem;
+        font-size: 0.55rem;
+        padding: 0.45rem 0.35rem 0.3rem;
+    }
+    .club-san-jorge .csj-hero__badge-bottom {
+        font-size: 0.45rem;
+    }
+    .club-san-jorge .csj-hero__title {
+        font-size: 1.25rem;
+    }
+    .club-san-jorge .csj-hero__content {
+        padding-right: 0;
+    }
+}
+
+@media (min-width: 768px) {
+    .club-san-jorge .csj-hero {
+        grid-template-columns: 1fr 1fr;
+        padding: 3rem 2rem 4rem;
+        min-height: 380px;
+    }
+    .club-san-jorge .csj-hero__badge {
+        width: 120px;
+        height: 120px;
+        top: 2rem;
+        right: 2rem;
+        font-size: 0.75rem;
+        padding: 0.7rem 0.5rem 0.5rem;
+    }
+    .club-san-jorge .csj-hero__badge-bottom {
+        font-size: 0.65rem;
+    }
+    .club-san-jorge .csj-hero__content {
+        text-align: left;
+        margin: 0;
+    }
+    .club-san-jorge .csj-hero__title {
+        font-size: 1.85rem;
+    }
+    .club-san-jorge .csj-hero__image {
+        max-height: 380px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .club-san-jorge .csj-hero__title {
+        font-size: 2rem;
+    }
+    .club-san-jorge .csj-hero__image {
+        max-height: 440px;
+    }
+}
+
+@media (min-width: 1200px) {
+    .club-san-jorge .csj-hero__image {
+        max-height: 500px;
+    }
+}
+
+/* Formulario de contacto */
+.club-san-jorge .csj-contact {
+    padding: 2rem 1rem;
+    background: var(--csj-gray-light);
+}
+
+.club-san-jorge .csj-contact__inner {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.club-san-jorge .csj-contact__title {
+    margin: 0 0 1rem;
+    font-size: 1.1rem;
+    color: var(--csj-gray-dark);
+}
+
+.club-san-jorge .csj-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.club-san-jorge .csj-form__label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--csj-gray-dark);
+}
+
+.club-san-jorge .csj-form__input {
+    padding: 0.65rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: var(--csj-radius-sm);
+    background: var(--csj-white);
+    transition: border-color 0.2s;
+}
+
+.club-san-jorge .csj-form__input:focus {
+    outline: none;
+    border-color: var(--csj-secondary);
+}
+
+.club-san-jorge .csj-form__input::placeholder {
+    color: #999;
+}
+
+.club-san-jorge .csj-form__input.invalid {
+    border-color: var(--csj-primary);
+}
+
+.club-san-jorge .csj-contact__disclaimer {
+    font-size: 0.75rem;
+    color: var(--csj-gray);
+    margin: 0 0 1rem;
+    line-height: 1.4;
+}
+
+/* Planes */
+.club-san-jorge .csj-plans {
+    padding: 2.5rem 1rem 3rem;
+    max-width: var(--csj-max-width);
+    margin: 0 auto;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+.club-san-jorge .csj-plans__title {
+    text-align: center;
+    margin: 0 0 1.5rem;
+    font-size: 1.35rem;
+    color: var(--csj-gray-dark);
+}
+
+/* Grid con filas de altura igual (todas las tarjetas iguales) */
+.club-san-jorge .csj-plans__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.club-san-jorge .csj-plan-card {
+    background: var(--csj-white);
+    border: 2px solid var(--csj-secondary);
+    border-radius: var(--csj-radius);
+    overflow: hidden;
+    box-shadow: var(--csj-shadow);
+    display: flex;
+    flex-direction: column;
+    min-height: 100%;
+    transition: box-shadow 0.2s;
+}
+
+.club-san-jorge .csj-plan-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.club-san-jorge .csj-plan-card__header {
+    padding: 0.75rem 1rem;
+    color: var(--csj-white);
+    text-align: center;
+    font-weight: 700;
+}
+
+.club-san-jorge .csj-plan-card__header--red {
+    background: var(--csj-primary);
+}
+
+.club-san-jorge .csj-plan-card__header--green {
+    background: var(--csj-secondary);
+}
+
+.club-san-jorge .csj-plan-card__subtitle {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity: 0.95;
+}
+
+.club-san-jorge .csj-plan-card__title {
+    display: block;
+    font-size: 1.1rem;
+    margin: 0.15em 0 0;
+}
+
+/* Misma altura para todas las tarjetas: área de imagen fija */
+.club-san-jorge .csj-plan-card__image-wrap {
+    padding: 0.75rem;
+    height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--csj-white);
+    flex-shrink: 0;
+}
+
+.club-san-jorge .csj-plan-card__image {
+    max-height: 200px;
+    max-width: 100%;
+    width: auto;
+    object-fit: contain;
+}
+
+.club-san-jorge .csj-plan-card__price {
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.club-san-jorge .csj-plan-card__price-tag {
+    display: inline-block;
+    background: var(--csj-gray-dark);
+    color: var(--csj-white);
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+}
+
+.club-san-jorge .csj-plan-card__price-tag small {
+    font-size: 0.7em;
+    font-weight: 500;
+    margin-right: 0.25rem;
+}
+
+.club-san-jorge .csj-plan-card__cta {
+    margin: 0 1rem 1rem;
+    margin-top: auto;
+}
+
+.club-san-jorge .csj-plan-card__cta .csj-btn {
+    width: 100%;
+}
+
+@media (min-width: 600px) {
+    .club-san-jorge .csj-plans__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .club-san-jorge .csj-plans__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.75rem;
+    }
+    .club-san-jorge .csj-plans__title {
+        font-size: 1.5rem;
+    }
+}
+
+/* ========== GANADORES (mismo criterio de grid igual que planes) ========== */
+.club-san-jorge .csj-ganadores {
+    padding: 2.5rem 1rem 3rem;
+    max-width: var(--csj-max-width);
+    margin: 0 auto;
+    background: var(--csj-gray-light);
+}
+
+.club-san-jorge .csj-ganadores__title {
+    text-align: center;
+    margin: 0 0 1.5rem;
+    font-size: 1.35rem;
+    color: var(--csj-gray-dark);
+}
+
+.club-san-jorge .csj-ganadores__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    grid-auto-rows: 1fr;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+.club-san-jorge .csj-ganadores__item {
+    min-height: 100%;
+}
+
+.club-san-jorge .csj-ganador-card {
+    background: var(--csj-white);
+    border-radius: var(--csj-radius);
+    overflow: hidden;
+    box-shadow: var(--csj-shadow);
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    transition: box-shadow 0.2s;
+}
+
+.club-san-jorge .csj-ganador-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.club-san-jorge .csj-ganador-card__image-wrap {
+    position: relative;
+    height: 220px;
+    background: var(--csj-gray-light);
+    overflow: hidden;
+}
+
+.club-san-jorge .csj-ganador-card__image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.club-san-jorge .csj-ganador-card__cuota {
+    position: absolute;
+    bottom: 0.5rem;
+    left: 0.5rem;
+    background: var(--csj-secondary);
+    color: var(--csj-white);
+    padding: 0.35rem 0.75rem;
+    border-radius: var(--csj-radius-sm);
+    font-size: 0.8rem;
+    font-weight: 600;
+}
+
+.club-san-jorge .csj-ganador-card__details {
+    padding: 1rem;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    gap: 0.35rem;
+}
+
+.club-san-jorge .csj-ganador-card__title {
+    margin: 0 0 0.25rem;
+    font-size: 1rem;
+    font-weight: 700;
+    color: var(--csj-gray-dark);
+    line-height: 1.2;
+}
+
+.club-san-jorge .csj-ganador-card__text {
+    margin: 0;
+    font-size: 0.85rem;
+    color: var(--csj-gray);
+    display: flex;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.club-san-jorge .csj-ganador-card__icon {
+    flex-shrink: 0;
+    font-size: 1rem;
+}
+
+.club-san-jorge .csj-ganador-card__text-span {
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+@media (min-width: 600px) {
+    .club-san-jorge .csj-ganadores__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .club-san-jorge .csj-ganadores__grid {
+        grid-template-columns: repeat(4, 1fr);
+        gap: 1.75rem;
+    }
+    .club-san-jorge .csj-ganadores__title {
+        font-size: 1.5rem;
+    }
+}
+
+/* ========== BANNER CYA (última sección: negocio + imágenes) ========== */
+.club-san-jorge .csj-banner-cya {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 2rem 1rem 0;
+    background: var(--csj-secondary);
+}
+
+.club-san-jorge .csj-banner-cya__inner {
+    width: 100%;
+    max-width: var(--csj-max-width);
+}
+
+.club-san-jorge .csj-banner-cya__row {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: column;
+    align-items: center;
+    gap: 2rem;
+}
+
+.club-san-jorge .csj-banner-cya__col-text {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+}
+
+.club-san-jorge .csj-banner-cya__title {
+    font-weight: 700;
+    color: var(--csj-white);
+    margin: 0 0 1rem;
+    font-size: 1.25rem;
+    line-height: 1.3;
+}
+
+.club-san-jorge .csj-banner-cya__link {
+    display: inline-block;
+    font-weight: 600;
+    text-align: center;
+    padding: 0.75rem 1.5rem;
+    border-radius: 100px;
+    background: var(--csj-white);
+    color: var(--csj-secondary);
+    border: 2px solid var(--csj-white);
+    transition: background 0.2s, color 0.2s;
+}
+
+.club-san-jorge .csj-banner-cya__link:hover {
+    background: transparent;
+    color: var(--csj-white);
+}
+
+.club-san-jorge .csj-banner-cya__col-images {
+    position: relative;
+    width: 100%;
+    min-height: 420px;
+    overflow: hidden;
+}
+
+.club-san-jorge .csj-banner-cya__img {
+    position: absolute;
+    max-width: 85%;
+    max-height: 100%;
+    width: auto;
+    height: auto;
+    object-fit: contain;
+    object-position: bottom;
+    border-radius: 0;
+    box-shadow: none;
+}
+
+.club-san-jorge .csj-banner-cya__img--first {
+    left: 0;
+    bottom: 0;
+    top: auto;
+    z-index: 1;
+}
+
+.club-san-jorge .csj-banner-cya__img--second {
+    right: 0;
+    bottom: 0;
+    top: auto;
+    z-index: 0;
+}
+
+@media (min-width: 1200px) {
+    .club-san-jorge .csj-banner-cya {
+        padding: 3rem 2rem 0;
+    }
+
+    .club-san-jorge .csj-banner-cya__row {
+        flex-direction: row;
+        align-items: stretch;
+        gap: 0;
+    }
+
+    .club-san-jorge .csj-banner-cya__col-text {
+        flex: 0 0 33.333%;
+        max-width: 33.333%;
+        align-items: flex-start;
+        text-align: left;
+    }
+
+    .club-san-jorge .csj-banner-cya__col-images {
+        flex: 0 0 66.666%;
+        max-width: 66.666%;
+        min-height: 480px;
+    }
+
+    .club-san-jorge .csj-banner-cya__title {
+        font-size: 1.5rem;
+    }
+}
+
+.club-san-jorge .csj-btn:focus-visible,
+.club-san-jorge .csj-form__input:focus-visible {
+    outline: 2px solid var(--csj-secondary);
+    outline-offset: 2px;
+}
