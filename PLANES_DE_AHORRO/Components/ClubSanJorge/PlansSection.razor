@@ -1,0 +1,12 @@
+@* Lista de planes: depende de IPlanesConfig (SOLID - D), renderiza una PlanCard por cada plan (Open/Closed). *@
+@inject IPlanesConfig Config
+
+<section class="csj-plans" id="planes" aria-labelledby="plans-title">
+    <h2 id="plans-title" class="csj-plans__title">Elegí tu Plan de Capitalización:</h2>
+    <div class="csj-plans__grid" role="list">
+        @foreach (var plan in Config.GetPlans())
+        {
+            <PlanCard Plan="@plan" />
+        }
+    </div>
+</section>

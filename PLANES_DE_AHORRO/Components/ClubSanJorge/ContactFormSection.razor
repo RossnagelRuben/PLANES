@@ -1,0 +1,133 @@
+@* Formulario de contacto: única responsabilidad de recolección y envío de datos (SOLID - S). *@
+@inject IPlanesConfig Config
+@inject IJSRuntime JS
+
+<section class="csj-contact" id="contacto" aria-labelledby="contact-form-title">
+    <div class="csj-contact__inner">
+        <h2 id="contact-form-title" class="csj-contact__title">
+            O dejanos tus datos y te contactamos:
+        </h2>
+        <EditForm Model="@_model" FormName="contacto">
+            <div class="csj-form">
+                <label class="csj-form__label" for="nombre">Nombre</label>
+                <InputText id="nombre"
+                           @bind-Value="_model.Nombre"
+                           class="@NombreInputClass"
+                           placeholder="Nombre" />
+
+                <label class="csj-form__label" for="localidad">Localidad</label>
+                <InputText id="localidad"
+                           @bind-Value="_model.Localidad"
+                           class="@LocalidadInputClass"
+                           placeholder="Localidad" />
+
+                <label class="csj-form__label" for="celular">Celular</label>
+                <InputText id="celular"
+                           @bind-Value="_model.Celular"
+                           class="@CelularInputClass"
+                           placeholder="Celular" />
+
+                <a href="@GetHrefSegunValidacion()"
+                   class="csj-btn"
+                   target="_blank"
+                   rel="noopener noreferrer"
+                   @onclick="AlHacerClicEnviar"
+                   @onclick:preventDefault="@(!FormularioValido())">
+                    ENVIAR
+                </a>
+            </div>
+        </EditForm>
+        <p class="csj-contact__disclaimer">
+            Al enviar aceptás que te contactemos por los medios indicados. Tus datos no serán compartidos con terceros.
+        </p>
+    </div>
+</section>
+
+@code {
+    private ContactoModel _model = new();
+    private bool _errorsNombre, _errorsLocalidad, _errorsCelular;
+
+    private string NombreInputClass => "csj-form__input" + (_errorsNombre ? " invalid" : "");
+    private string LocalidadInputClass => "csj-form__input" + (_errorsLocalidad ? " invalid" : "");
+    private string CelularInputClass => "csj-form__input" + (_errorsCelular ? " invalid" : "");
+
+    private bool FormularioValido()
+    {
+        try
+        {
+            return _model != null
+                && !string.IsNullOrWhiteSpace(_model.Nombre)
+                && !string.IsNullOrWhiteSpace(_model.Localidad)
+                && !string.IsNullOrWhiteSpace(_model.Celular);
+        }
+        catch (Exception ex)
+        {
+            _ = Log("FormularioValido ERROR", ex.Message);
+            return false;
+        }
+    }
+
+    private string GetHrefSegunValidacion()
+    {
+        try
+        {
+            return FormularioValido() ? GetWhatsAppHref() : "javascript:void(0)";
+        }
+        catch (Exception ex)
+        {
+            _ = Log("GetHrefSegunValidacion ERROR", ex.Message);
+            return "javascript:void(0)";
+        }
+    }
+
+    private string GetWhatsAppHref()
+    {
+        var n = _model?.Nombre?.Trim() ?? "";
+        var l = _model?.Localidad?.Trim() ?? "";
+        var c = _model?.Celular?.Trim() ?? "";
+        var mensaje = "HOLA, VENGO DE LA PAGINA Y ESTOY INTERESADO EN LOS PLANES DE CAPITALIZACIÓN Y AHORRO, MIS DATOS SON:"
+            + $"\nNombre: {n}"
+            + $"\nLocalidad: {l}"
+            + $"\nCelular: {c}";
+        return WhatsAppHelper.BuildUrl(Config.WhatsappPlansPhone, mensaje);
+    }
+
+    private async Task Log(string tag, string mensaje)
+    {
+        try
+        {
+            await JS.InvokeVoidAsync("console.log", $"[ContactForm] {tag}: {mensaje}");
+        }
+        catch { /* ignorar si la consola no está disponible */ }
+    }
+
+    private async Task AlHacerClicEnviar()
+    {
+        try
+        {
+            await Log("AlHacerClicEnviar", $"Nombre='{_model?.Nombre ?? ""}', Localidad='{_model?.Localidad ?? ""}', Celular='{_model?.Celular ?? ""}'");
+            if (FormularioValido())
+            {
+                await Log("AlHacerClicEnviar", "Válido -> se abre WhatsApp");
+                return;
+            }
+            _errorsNombre = string.IsNullOrWhiteSpace(_model?.Nombre);
+            _errorsLocalidad = string.IsNullOrWhiteSpace(_model?.Localidad);
+            _errorsCelular = string.IsNullOrWhiteSpace(_model?.Celular);
+            await Log("AlHacerClicEnviar", $"Errores: Nombre={_errorsNombre}, Localidad={_errorsLocalidad}, Celular={_errorsCelular}");
+            StateHasChanged();
+        }
+        catch (Exception ex)
+        {
+            await Log("AlHacerClicEnviar ERROR", ex.Message + " | " + ex.StackTrace);
+            throw;
+        }
+    }
+
+    private class ContactoModel
+    {
+        public string Nombre { get; set; } = "";
+        public string Localidad { get; set; } = "";
+        public string Celular { get; set; } = "";
+    }
+}

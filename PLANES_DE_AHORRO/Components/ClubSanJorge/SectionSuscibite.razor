@@ -1,0 +1,63 @@
+@* Sección inicial: "SUSCRIBITE, AHORRÁ Y GANÁ" + texto + último sorteo (estímulos) + video YouTube. *@
+@inject IPlanesConfig Config
+
+<section class="csj-section-suscibite" id="suscibite">
+    <div class="csj-section-suscibite__inner">
+        <div class="csj-section-suscibite__row">
+            <div class="csj-section-suscibite__col-text">
+                <h1 class="csj-section-suscibite__title">
+                    SUSCRIBITE,<br />AHORRÁ Y GANÁ
+                </h1>
+                <p class="csj-section-suscibite__intro">
+                    Con cada cuota, ahorrás y todos los meses estás un paso <strong>más cerca de ser uno de nuestros cientos de adjudicados</strong>.
+                </p>
+                <div class="csj-sorteo-box" id="ultimo-sorteo">
+                    <div class="csj-sorteo-box__premios">
+                        <div class="csj-sorteo-box__premio csj-sorteo-box__premio--first">
+                            <p class="csj-sorteo-box__numero">810</p>
+                            <p class="csj-sorteo-box__label">1° Estímulo</p>
+                        </div>
+                        <div class="csj-sorteo-box__premio csj-sorteo-box__premio--other">
+                            <p class="csj-sorteo-box__numero">886</p>
+                            <p class="csj-sorteo-box__label">2° Estímulo</p>
+                        </div>
+                        <div class="csj-sorteo-box__premio csj-sorteo-box__premio--other">
+                            <p class="csj-sorteo-box__numero">094</p>
+                            <p class="csj-sorteo-box__label">3° Estímulo</p>
+                        </div>
+                    </div>
+                    <div class="csj-sorteo-box__footer">
+                        <p class="csj-sorteo-box__fecha">
+                            Último sorteo <span class="csj-sorteo-box__fecha-valor">31-01-2026 LOTBA</span>
+                        </p>
+                        <p class="csj-sorteo-box__proximo">
+                            Próximo sorteo
+                            <span class="csj-sorteo-box__calendar" aria-hidden="true">
+                                <svg width="34" height="35" viewBox="0 0 34 35" fill="none" xmlns="http://www.w3.org/2000/svg">
+                                    <path d="M7.083 32.083q-1.169 0-2-.856a2.85 2.85 0 0 1-.833-2.06V8.75q0-1.203.832-2.06t2.001-.857H8.5V4.375q0-.62.407-1.04a1.35 1.35 0 0 1 1.01-.418q.602 0 1.009.419.408.42.407 1.039v1.458h11.334V4.375q0-.62.407-1.04a1.35 1.35 0 0 1 1.01-.418q.6 0 1.009.419.407.42.407 1.039v1.458h1.417q1.169 0 2 .857a2.85 2.85 0 0 1 .833 2.06v20.417a2.85 2.85 0 0 1-.832 2.06q-.832.855-2.001.856zm0-2.916h19.834V14.583H7.083zm0-17.5h19.834V8.75H7.083zM17 20.417q-.602 0-1.01-.42a1.43 1.43 0 0 1-.407-1.039q0-.62.408-1.039.407-.42 1.009-.419.602 0 1.01.42.406.419.407 1.038 0 .62-.408 1.04-.407.419-1.009.419m-5.667 0a1.35 1.35 0 0 1-1.009-.42 1.43 1.43 0 0 1-.407-1.039q0-.62.407-1.039a1.35 1.35 0 0 1 1.01-.419q.6 0 1.009.42.407.419.407 1.038 0 .62-.407 1.04a1.35 1.35 0 0 1-1.01.419m11.334 0a1.35 1.35 0 0 1-1.01-.42 1.43 1.43 0 0 1-.407-1.039q0-.62.407-1.039a1.35 1.35 0 0 1 1.01-.419q.601 0 1.009.42.407.419.407 1.038 0 .62-.407 1.04a1.35 1.35 0 0 1-1.01.419M17 26.25a1.35 1.35 0 0 1-1.01-.42 1.43 1.43 0 0 1-.407-1.038q0-.62.408-1.04.407-.419 1.009-.419t1.01.42q.406.419.407 1.039t-.408 1.039A1.35 1.35 0 0 1 17 26.25m-5.667 0a1.35 1.35 0 0 1-1.009-.42 1.43 1.43 0 0 1-.407-1.038q0-.62.407-1.04a1.35 1.35 0 0 1 1.01-.419q.6 0 1.009.42.407.419.407 1.039t-.407 1.039a1.35 1.35 0 0 1-1.01.419m11.334 0a1.35 1.35 0 0 1-1.01-.42 1.43 1.43 0 0 1-.407-1.038q0-.62.407-1.04a1.35 1.35 0 0 1 1.01-.419q.601 0 1.009.42.407.419.407 1.039t-.407 1.039a1.35 1.35 0 0 1-1.01.419" fill="#007A4B" />
+                                </svg>
+                            </span>
+                            <span class="csj-sorteo-box__proximo-valor">28-02-2026</span>
+                        </p>
+                        <a href="@Config.WhatsappPagarBoletaUrl"
+                           class="csj-sorteo-box__cta"
+                           target="_blank"
+                           rel="noopener noreferrer">
+                            Pagá tu boleta ahora
+                        </a>
+                    </div>
+                </div>
+            </div>
+            <div class="csj-section-suscibite__col-video">
+                <div class="csj-video-wrap">
+                    <iframe class="csj-video-wrap__iframe"
+                            src="https://www.youtube.com/embed/_XfT1qPQ8Tc?si=p6TxGaanHs41378R"
+                            title="Club San Jorge. Con nosotros podés."
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                            referrerpolicy="strict-origin-when-cross-origin"
+                            allowfullscreen></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

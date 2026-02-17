@@ -1,0 +1,126 @@
+name: Deploy Blazor WASM
+
+on:
+  push:
+    branches: [ "main" ]
+
+permissions:
+  contents: read
+  pages: write
+  id-token: write
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Setup .NET
+        uses: actions/setup-dotnet@v4
+        with:
+          dotnet-version: 10.0.x
+
+      - name: Publish
+        run: dotnet publish ./PLANES_DE_AHORRO/PLANES_DE_AHORRO.csproj -c Release -o publish
+
+      - name: Preparar sitio para GitHub Pages
+        run: |
+          mkdir -p site
+          if [ -d publish/wwwroot ]; then
+            cp -r publish/wwwroot/* site/
+            cp -r publish/wwwroot/.[!.]* site/ 2>/dev/null || true
+          else
+            cp -r publish/* site/
+            cp -r publish/.[!.]* site/ 2>/dev/null || true
+          fi
+          touch site/.nojekyll
+          if [ ! -d site/_framework ]; then
+            echo "ERROR: _framework no existe."
+            ls -la publish/ || true
+            ls -la publish/wwwroot/ 2>/dev/null || true
+            exit 1
+          fi
+          echo "Contenido raíz:"
+          ls -la site/
+          ls site/_framework/ | head -10
+
+      - name: Upload artifact (GitHub Actions deploy)
+        uses: actions/upload-pages-artifact@v3
+        with:
+          path: site
+
+      - name: Upload artifact (para rama gh-pages)
+        uses: actions/upload-artifact@v4
+        with:
+          name: site
+          path: site
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    environment:
+      name: github-pages
+      url: ${{ steps.deploy.outputs.page_url }}
+    steps:
+      - name: Deploy to GitHub Pages
+        id: deploy
+        uses: actions/deploy-pages@v4
+
+  deploy-gh-pages-branch:
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: write
+    steps:
+      - name: Download site
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+
+      - name: Deploy to rama gh-pages
+        uses: peaceiris/actions-gh-pages@v4
+        with:
+          github_token: ${{ secrets.GITHUB_TOKEN }}
+          publish_dir: .
+          publish_branch: gh-pages
+          force_orphan: true
+          user_name: "github-actions[bot]"
+          user_email: "github-actions[bot]@users.noreply.github.com"
+
+  # Sube el sitio a main/docs para que Pages con "Branch: main, Folder: /docs" lo sirva (incluye _framework)
+  deploy-docs-on-main:
+    runs-on: ubuntu-latest
+    needs: build
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/checkout@v4
+        with:
+          ref: main
+
+      - name: Download site
+        uses: actions/download-artifact@v4
+        with:
+          name: site
+          path: site_build
+
+      - name: Actualizar carpeta docs
+        run: |
+          rm -rf docs
+          mkdir -p docs
+          cp -r site_build/* docs/
+          cp site_build/.nojekyll docs/ 2>/dev/null || true
+          ls -la docs/
+          ls docs/_framework/ | head -5
+
+      - name: Commit y push a main
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add docs/
+          git status
+          git diff --staged --stat
+          if [ -n "$(git status --porcelain)" ]; then
+            git commit -m "chore: actualizar docs/ con build Blazor WASM [skip ci]"
+            git push origin main
+          fi

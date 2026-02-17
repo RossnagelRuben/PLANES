@@ -1,0 +1,30 @@
+@* Banner CTA: "Iniciá tu propio negocio" + enlace Saber más + imágenes (última sección de la landing). *@
+@inject IPlanesConfig Config
+
+<section class="csj-banner-cya">
+    <div class="csj-banner-cya__inner">
+        <div class="csj-banner-cya__row">
+            <div class="csj-banner-cya__col-text">
+                <h4 class="csj-banner-cya__title">
+                    ¡Iniciá tu propio negocio de Capitalización y Ahorro!
+                </h4>
+                <a href="@WhatsAppHelper.BuildUrl(Config.WhatsappPlansPhone, "Hola, estoy interesado en unirme como *vendedor de Planes de Capitalizacion y ahorro*")"
+                   class="csj-banner-cya__link"
+                   target="_blank"
+                   rel="noopener noreferrer">
+                    Saber más
+                </a>
+            </div>
+            <div class="csj-banner-cya__col-images">
+                <img src="https://www.clubsanjorge.com.ar/sites/default/files/2025-10/Agentes1%201.png"
+                     alt="Agentes de capitalización"
+                     class="csj-banner-cya__img csj-banner-cya__img--first"
+                     loading="lazy" />
+                <img src="https://www.clubsanjorge.com.ar/sites/default/files/2025-02/Agentes2.webp"
+                     alt="Agentes"
+                     class="csj-banner-cya__img csj-banner-cya__img--second"
+                     loading="lazy" />
+            </div>
+        </div>
+    </div>
+</section>

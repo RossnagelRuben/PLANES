@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Club San Jorge - Planes de Capitalización y Ahorro</title>
+    <meta name="description" content="Suscribite a nuestros planes de capitalización y ahorro. Honda Wave, motos de alta gama y Fiat Cronos.">
+    <!-- Estilos propios: única responsabilidad de presentación (SOLID: S) -->
+    <link rel="stylesheet" href="css/estilos.css">
+    <!-- Favicon -->
+    <link rel="icon" type="image/x-icon" href="../ICO.ico" />
+    <link rel="shortcut icon" type="image/x-icon" href="../ICO.ico" />
+</head>
+<body>
+    <!-- ========== HEADER: Responsabilidad única de identidad de marca ========== -->
+    <header class="header" role="banner">
+        <div class="header__inner">
+            <div class="logo">
+                <!-- Logo: G en cuadrado rojo + texto (abierto a cambiar imagen sin tocar estructura) -->
+                <div class="logo__icon" aria-hidden="true">G</div>
+                <div class="logo__text">
+                    <span class="logo__name">Club San Jorge</span>
+                    <span class="logo__tagline">Con nosotros podés</span>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <!-- ========== HERO: Una sola responsabilidad - mensaje principal y CTA ========== -->
+    <section class="hero" aria-labelledby="hero-title">
+        <div class="hero__badge" aria-hidden="true">
+            <span class="hero__badge-top">GANÁS</span>
+            <span class="hero__badge-bottom">y si querés, NO PAGÁS MÁS!</span>
+        </div>
+        <div class="hero__content">
+            <h1 id="hero-title" class="hero__title">
+                ¡Suscribite a nuestros planes de capitalización y ahorro!
+            </h1>
+            <a href="#" class="btn btn--primary btn--whatsapp js-whatsapp-hero" data-whatsapp-context="hero">
+                <span class="btn__icon" aria-hidden="true"></span>
+                HABLÁ CON NOSOTROS AHORA MISMO
+            </a>
+        </div>
+        <div class="hero__image-wrap">
+            <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=600" 
+                 alt="Moto promocional - Planes de ahorro" 
+                 class="hero__image" 
+                 width="400" height="300" loading="eager">
+        </div>
+    </section>
+
+    <!-- ========== FORMULARIO DE CONTACTO: Solo recolección de datos (visible sobre todo en móvil) ========== -->
+    <section class="contact-form-section" id="contacto" aria-labelledby="contact-form-title">
+        <div class="contact-form-section__inner">
+            <h2 id="contact-form-title" class="contact-form-section__title">
+                O dejanos tus datos y te contactamos:
+            </h2>
+            <form class="contact-form js-contact-form" novalidate>
+                <label class="contact-form__label" for="nombre">Nombre</label>
+                <input type="text" id="nombre" name="nombre" class="contact-form__input" placeholder="Nombre" required autocomplete="name">
+
+                <label class="contact-form__label" for="localidad">Localidad</label>
+                <input type="text" id="localidad" name="localidad" class="contact-form__input" placeholder="Localidad" required autocomplete="address-level2">
+
+                <label class="contact-form__label" for="celular">Celular</label>
+                <input type="tel" id="celular" name="celular" class="contact-form__input" placeholder="Celular" required autocomplete="tel">
+
+                <button type="submit" class="btn btn--primary btn--submit">ENVIAR</button>
+            </form>
+            <p class="contact-form-section__disclaimer">
+                Al enviar aceptás que te contactemos por los medios indicados. Tus datos no serán compartidos con terceros.
+            </p>
+            <a href="#" class="btn btn--primary btn--whatsapp btn--small js-whatsapp-footer" data-whatsapp-context="footer">
+                HABLAR POR WHATSAPP
+            </a>
+        </div>
+    </section>
+
+    <!-- ========== PLANES: Lista generada por datos (SOLID: O/C - abierto a extensión por datos) ========== -->
+    <section class="plans" id="planes" aria-labelledby="plans-title">
+        <h2 id="plans-title" class="plans__title">Elegí tu Plan de Capitalización:</h2>
+        <div class="plans__grid js-plans-container" role="list">
+            <!-- Las tarjetas se inyectan por JS desde config (Dependency Inversion: dependemos del contrato Plan, no del DOM) -->
+        </div>
+    </section>
+
+    <!-- Scripts: carga diferida para no bloquear render -->
+    <script src="js/config.js"></script>
+    <script src="js/whatsapp.js"></script>
+    <script src="js/form.js"></script>
+    <script src="js/main.js"></script>
+</body>
+</html>

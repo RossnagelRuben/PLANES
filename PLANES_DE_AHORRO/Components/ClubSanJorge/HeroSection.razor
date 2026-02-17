@@ -1,0 +1,25 @@
+@* Hero: mensaje principal y CTA WhatsApp (SOLID - S). Depende de IPlanesConfig para el número. *@
+@inject IPlanesConfig Config
+
+<section class="csj-hero" aria-labelledby="hero-title">
+    <div class="csj-hero__content">
+        <h1 id="hero-title" class="csj-hero__title">
+            ¡Suscribite a nuestros planes de capitalización y ahorro!
+        </h1>
+        <a href="@WhatsAppHelper.BuildUrl(Config.WhatsappPlansPhone, "Hola, vengo de la pagina, quiero saber mas sobre los planes de capitalizacion y ahorro")"
+           class="csj-btn csj-btn--whatsapp"
+           target="_blank"
+           rel="noopener noreferrer">
+            <span class="csj-btn__icon" aria-hidden="true"></span>
+            HABLÁ CON NOSOTROS AHORA MISMO
+        </a>
+    </div>
+    <div class="csj-hero__image-wrap">
+        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=600"
+             alt="Moto promocional - Planes de ahorro"
+             class="csj-hero__image"
+             width="400"
+             height="300"
+             loading="eager" />
+    </div>
+</section>

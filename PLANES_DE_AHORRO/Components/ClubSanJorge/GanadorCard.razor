@@ -1,0 +1,31 @@
+@* Tarjeta de un ganador: imagen, cuota, nombre, ubicación, fecha, premio (SOLID - S). *@
+
+<div class="csj-ganador-card">
+    <div class="csj-ganador-card__image-wrap">
+        <img class="csj-ganador-card__image"
+             src="@Ganador.ImagenUrl"
+             alt="@Ganador.Nombre"
+             loading="lazy" />
+        <span class="csj-ganador-card__cuota">Cuota @Ganador.Cuota</span>
+    </div>
+    <div class="csj-ganador-card__details">
+        <h4 class="csj-ganador-card__title">@Ganador.Nombre</h4>
+        <p class="csj-ganador-card__text">
+            <span class="csj-ganador-card__icon" aria-hidden="true">📍</span>
+            <span class="csj-ganador-card__text-span">@Ganador.Localidad</span>
+        </p>
+        <p class="csj-ganador-card__text">
+            <span class="csj-ganador-card__icon" aria-hidden="true">🗓</span>
+            <span class="csj-ganador-card__text-span">Adjudicó en @Ganador.FechaAdjudicacion</span>
+        </p>
+        <p class="csj-ganador-card__text">
+            <span class="csj-ganador-card__icon" aria-hidden="true">🏆</span>
+            <span class="csj-ganador-card__text-span">@Ganador.Premio</span>
+        </p>
+    </div>
+</div>
+
+@code {
+    [Parameter, EditorRequired]
+    public Ganador Ganador { get; set; } = null!;
+}

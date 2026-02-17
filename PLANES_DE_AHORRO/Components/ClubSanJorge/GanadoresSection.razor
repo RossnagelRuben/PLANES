@@ -1,0 +1,14 @@
+@* Sección de ganadores adjudicados (SOLID - S). Depende de IGanadoresConfig. *@
+@inject IGanadoresConfig GanadoresConfig
+
+<section class="csj-ganadores" id="ganadores" aria-labelledby="ganadores-title">
+    <h2 id="ganadores-title" class="csj-ganadores__title">Nuestros ganadores</h2>
+    <div class="csj-ganadores__grid" role="list">
+        @foreach (var g in GanadoresConfig.GetGanadores())
+        {
+            <div class="csj-ganadores__item" role="listitem">
+                <GanadorCard Ganador="@g" />
+            </div>
+        }
+    </div>
+</section>
