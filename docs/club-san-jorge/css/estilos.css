@@ -1,0 +1,451 @@
+/*
+ * Club San Jorge - Estilos
+ * Responsabilidad única (SOLID - S): solo presentación visual.
+ * Variables para facilitar cambios de marca (Open/Closed).
+ */
+
+/* ========== Variables de diseño (única fuente de verdad para colores y espaciado) ========== */
+:root {
+    --color-primary: #c41e3a;
+    --color-primary-dark: #9e1830;
+    --color-secondary: #2d7a3e;
+    --color-secondary-dark: #1e5c2b;
+    --color-white: #ffffff;
+    --color-gray-dark: #2c2c2c;
+    --color-gray: #555;
+    --color-gray-light: #f5f5f5;
+    --radius: 12px;
+    --radius-sm: 8px;
+    --shadow: 0 4px 12px rgba(0, 0, 0, 0.08);
+    --font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+    --max-width: 1200px;
+    --header-height: 72px;
+}
+
+/* Reset mínimo y base */
+*,
+*::before,
+*::after {
+    box-sizing: border-box;
+}
+
+body {
+    margin: 0;
+    font-family: var(--font-family);
+    font-size: 16px;
+    line-height: 1.5;
+    color: var(--color-gray-dark);
+    background: var(--color-white);
+    overflow-x: hidden;
+}
+
+img {
+    max-width: 100%;
+    height: auto;
+    display: block;
+}
+
+a {
+    color: inherit;
+    text-decoration: none;
+}
+
+/* ========== HEADER ========== */
+.header {
+    position: sticky;
+    top: 0;
+    z-index: 100;
+    background: var(--color-white);
+    border-bottom: 1px solid var(--color-gray-light);
+    padding: 0.75rem 1rem;
+}
+
+.header__inner {
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.logo {
+    display: flex;
+    align-items: center;
+    gap: 0.75rem;
+}
+
+.logo__icon {
+    width: 44px;
+    height: 44px;
+    background: var(--color-primary);
+    color: var(--color-white);
+    font-weight: bold;
+    font-size: 1.25rem;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: var(--radius-sm);
+}
+
+.logo__text {
+    display: flex;
+    flex-direction: column;
+}
+
+.logo__name {
+    font-weight: 700;
+    font-size: 1.25rem;
+    color: var(--color-gray-dark);
+}
+
+.logo__tagline {
+    font-size: 0.8rem;
+    color: var(--color-gray);
+}
+
+/* ========== BOTONES (componente reutilizable) ========== */
+.btn {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    padding: 0.75rem 1.5rem;
+    font-family: inherit;
+    font-size: 0.9rem;
+    font-weight: 600;
+    border: none;
+    border-radius: var(--radius);
+    cursor: pointer;
+    transition: background 0.2s, transform 0.1s;
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+.btn--primary {
+    background: var(--color-secondary);
+    color: var(--color-white);
+}
+
+.btn--primary:hover,
+.btn--primary:focus {
+    background: var(--color-secondary-dark);
+    color: var(--color-white);
+}
+
+.btn--whatsapp {
+    /* Ícono WhatsApp simulado con texto/emoji si no hay SVG */
+}
+
+.btn__icon {
+    width: 20px;
+    height: 20px;
+    background: currentColor;
+    mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'/%3E%3C/svg%3E") center/contain no-repeat;
+    -webkit-mask: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='currentColor' stroke-width='2'%3E%3Cpath d='M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h.004a9.87 9.87 0 01-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 01-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 012.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0012.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 005.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 00-3.48-8.413z'/%3E%3C/svg%3E") center/contain no-repeat;
+}
+
+.btn--small {
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+}
+
+/* ========== HERO ========== */
+.hero {
+    position: relative;
+    background: var(--color-primary);
+    color: var(--color-white);
+    padding: 2rem 1rem 3rem;
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    align-items: center;
+    min-height: 320px;
+}
+
+.hero__badge {
+    position: absolute;
+    top: 1rem;
+    right: 1rem;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    background: linear-gradient(180deg, var(--color-primary) 50%, var(--color-secondary) 50%);
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    font-size: 0.65rem;
+    font-weight: 700;
+    line-height: 1.2;
+    padding: 0.5rem;
+    box-shadow: var(--shadow);
+}
+
+.hero__badge-top {
+    color: var(--color-white);
+}
+
+.hero__badge-bottom {
+    color: var(--color-white);
+    font-size: 0.55rem;
+}
+
+.hero__content {
+    text-align: center;
+    max-width: 520px;
+    margin: 0 auto;
+}
+
+.hero__title {
+    margin: 0 0 1.25rem;
+    font-size: 1.5rem;
+    font-weight: 700;
+    line-height: 1.25;
+}
+
+.hero__image-wrap {
+    display: flex;
+    justify-content: center;
+    align-items: flex-end;
+}
+
+.hero__image {
+    max-height: 200px;
+    object-fit: contain;
+    filter: drop-shadow(0 8px 16px rgba(0,0,0,0.2));
+}
+
+/* Desktop: hero en dos columnas */
+@media (min-width: 768px) {
+    .hero {
+        grid-template-columns: 1fr 1fr;
+        padding: 3rem 2rem 4rem;
+        min-height: 380px;
+    }
+
+    .hero__badge {
+        width: 120px;
+        height: 120px;
+        top: 2rem;
+        right: 2rem;
+        font-size: 0.75rem;
+    }
+
+    .hero__badge-bottom {
+        font-size: 0.65rem;
+    }
+
+    .hero__content {
+        text-align: left;
+        margin: 0;
+    }
+
+    .hero__title {
+        font-size: 1.85rem;
+    }
+
+    .hero__image {
+        max-height: 280px;
+    }
+}
+
+@media (min-width: 1024px) {
+    .hero__title {
+        font-size: 2rem;
+    }
+}
+
+/* ========== FORMULARIO DE CONTACTO ========== */
+.contact-form-section {
+    padding: 2rem 1rem;
+    background: var(--color-gray-light);
+}
+
+.contact-form-section__inner {
+    max-width: 400px;
+    margin: 0 auto;
+}
+
+.contact-form-section__title {
+    margin: 0 0 1rem;
+    font-size: 1.1rem;
+    color: var(--color-gray-dark);
+}
+
+.contact-form {
+    display: flex;
+    flex-direction: column;
+    gap: 0.75rem;
+    margin-bottom: 1rem;
+}
+
+.contact-form__label {
+    font-size: 0.9rem;
+    font-weight: 500;
+    color: var(--color-gray-dark);
+}
+
+.contact-form__input {
+    padding: 0.65rem 0.75rem;
+    font-family: inherit;
+    font-size: 1rem;
+    border: 1px solid #ccc;
+    border-radius: var(--radius-sm);
+    background: var(--color-white);
+    transition: border-color 0.2s;
+}
+
+.contact-form__input:focus {
+    outline: none;
+    border-color: var(--color-secondary);
+}
+
+.contact-form__input::placeholder {
+    color: #999;
+}
+
+.contact-form__input--error {
+    border-color: var(--color-primary);
+}
+
+.contact-form-section__disclaimer {
+    font-size: 0.75rem;
+    color: var(--color-gray);
+    margin: 0 0 1rem;
+    line-height: 1.4;
+}
+
+/* ========== SECCIÓN PLANES ========== */
+.plans {
+    padding: 2.5rem 1rem 3rem;
+    max-width: var(--max-width);
+    margin: 0 auto;
+}
+
+.plans__title {
+    text-align: center;
+    margin: 0 0 1.5rem;
+    font-size: 1.35rem;
+    color: var(--color-gray-dark);
+}
+
+.plans__grid {
+    display: grid;
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+}
+
+/* Tarjeta de plan (componente reutilizable) */
+.plan-card {
+    background: var(--color-white);
+    border: 2px solid var(--color-secondary);
+    border-radius: var(--radius);
+    overflow: hidden;
+    box-shadow: var(--shadow);
+    display: flex;
+    flex-direction: column;
+    transition: box-shadow 0.2s;
+}
+
+.plan-card:hover {
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12);
+}
+
+.plan-card__header {
+    padding: 0.75rem 1rem;
+    color: var(--color-white);
+    text-align: center;
+    font-weight: 700;
+}
+
+.plan-card__header--red {
+    background: var(--color-primary);
+}
+
+.plan-card__header--green {
+    background: var(--color-secondary);
+}
+
+.plan-card__subtitle {
+    display: block;
+    font-size: 0.75rem;
+    font-weight: 600;
+    opacity: 0.95;
+}
+
+.plan-card__title {
+    display: block;
+    font-size: 1.1rem;
+    margin: 0.15em 0 0;
+}
+
+.plan-card__image-wrap {
+    padding: 1rem;
+    min-height: 160px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background: var(--color-gray-light);
+}
+
+.plan-card__image {
+    max-height: 140px;
+    object-fit: contain;
+}
+
+.plan-card__price {
+    padding: 0 1rem;
+    margin-bottom: 0.5rem;
+}
+
+.plan-card__price-tag {
+    display: inline-block;
+    background: var(--color-gray-dark);
+    color: var(--color-white);
+    padding: 0.4rem 0.75rem;
+    border-radius: 999px;
+    font-size: 0.85rem;
+}
+
+.plan-card__price-tag small {
+    font-size: 0.7em;
+    font-weight: 500;
+    margin-right: 0.25rem;
+}
+
+.plan-card__cta {
+    margin: 0 1rem 1rem;
+    margin-top: auto;
+}
+
+.plan-card__cta .btn {
+    width: 100%;
+}
+
+/* Grid responsivo: 2 columnas en tablet, 3 en desktop */
+@media (min-width: 600px) {
+    .plans__grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+}
+
+@media (min-width: 900px) {
+    .plans__grid {
+        grid-template-columns: repeat(3, 1fr);
+        gap: 1.75rem;
+    }
+
+    .plans__title {
+        font-size: 1.5rem;
+    }
+}
+
+/* Accesibilidad: focus visible */
+.btn:focus-visible,
+.contact-form__input:focus-visible {
+    outline: 2px solid var(--color-secondary);
+    outline-offset: 2px;
+}
