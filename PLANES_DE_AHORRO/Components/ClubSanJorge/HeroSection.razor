@@ -1,11 +1,11 @@
 @* Hero: mensaje principal y CTA WhatsApp (SOLID - S). Depende de IPlanesConfig para el número. *@
 @inject IPlanesConfig Config
 
-<section class="csj-hero" aria-labelledby="hero-title">
+<section class="csj-hero" aria-labelledby="hero-mensaje">
     <div class="csj-hero__content">
-        <h1 id="hero-title" class="csj-hero__title">
+        <div id="hero-mensaje" class="csj-hero__mensaje" role="heading" aria-level="1">
             ¡Suscribite a nuestros planes de capitalización y ahorro!
-        </h1>
+        </div>
         <a href="@WhatsAppHelper.BuildUrl(Config.WhatsappPlansPhone, "Hola, vengo de la pagina, quiero saber mas sobre los planes de capitalizacion y ahorro")"
            class="csj-btn csj-btn--whatsapp"
            target="_blank"
@@ -15,11 +15,13 @@
         </a>
     </div>
     <div class="csj-hero__image-wrap">
-        <img src="https://images.unsplash.com/photo-1558981806-ec527fa84c39?auto=format&fit=crop&w=600"
-             alt="Moto promocional - Planes de ahorro"
-             class="csj-hero__image"
-             width="400"
-             height="300"
-             loading="eager" />
+        <div class="csj-hero__images-box">
+            <img src="https://www.clubsanjorge.com.ar/sites/default/files/2022-01/Logo%20Club%20San%20Jorge%20con%20slogan%20color.png"
+                 alt="Club San Jorge - Logo con slogan"
+                 class="csj-hero__image"
+                 width="400"
+                 height="300"
+                 loading="eager" />
+        </div>
     </div>
 </section>

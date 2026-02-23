@@ -21,11 +21,26 @@
                            class="@LocalidadInputClass"
                            placeholder="Localidad" />
 
+                <label class="csj-form__label" for="domicilio">Domicilio</label>
+                <InputText id="domicilio"
+                           @bind-Value="_model.Domicilio"
+                           class="csj-form__input"
+                           placeholder="Domicilio" />
+
                 <label class="csj-form__label" for="celular">Celular</label>
                 <InputText id="celular"
                            @bind-Value="_model.Celular"
                            class="@CelularInputClass"
-                           placeholder="Celular" />
+                           placeholder="3751-418382"
+                           maxlength="11" />
+
+                <label class="csj-form__label" for="observaciones">Observaciones Adicionales <span class="csj-form__hint">(hasta 100 caracteres)</span></label>
+                <InputTextArea id="observaciones"
+                              @bind-Value="_model.ObservacionesAdicionales"
+                              class="csj-form__input csj-form__textarea"
+                              placeholder="Observaciones Adicionales"
+                              maxlength="100"
+                              rows="3" />
 
                 <a href="@GetHrefSegunValidacion()"
                    class="csj-btn"
@@ -58,7 +73,7 @@
             return _model != null
                 && !string.IsNullOrWhiteSpace(_model.Nombre)
                 && !string.IsNullOrWhiteSpace(_model.Localidad)
-                && !string.IsNullOrWhiteSpace(_model.Celular);
+                && _model.CelularSoloDigitos?.Length == ContactoModel.CelularDigitsLength;
         }
         catch (Exception ex)
         {
@@ -84,11 +99,15 @@
     {
         var n = _model?.Nombre?.Trim() ?? "";
         var l = _model?.Localidad?.Trim() ?? "";
-        var c = _model?.Celular?.Trim() ?? "";
+        var d = _model?.Domicilio?.Trim() ?? "";
+        var c = _model?.Celular ?? "";
+        var o = _model?.ObservacionesAdicionalesTrimmed ?? "";
         var mensaje = "HOLA, VENGO DE LA PAGINA Y ESTOY INTERESADO EN LOS PLANES DE CAPITALIZACIÓN Y AHORRO, MIS DATOS SON:"
             + $"\nNombre: {n}"
             + $"\nLocalidad: {l}"
-            + $"\nCelular: {c}";
+            + $"\nDomicilio: {d}"
+            + $"\nCelular: {c}"
+            + (string.IsNullOrEmpty(o) ? "" : $"\nObservaciones: {o}");
         return WhatsAppHelper.BuildUrl(Config.WhatsappPlansPhone, mensaje);
     }
 
@@ -105,7 +124,7 @@
     {
         try
         {
-            await Log("AlHacerClicEnviar", $"Nombre='{_model?.Nombre ?? ""}', Localidad='{_model?.Localidad ?? ""}', Celular='{_model?.Celular ?? ""}'");
+            await Log("AlHacerClicEnviar", $"Nombre='{_model?.Nombre ?? ""}', Localidad='{_model?.Localidad ?? ""}', Domicilio='{_model?.Domicilio ?? ""}', Celular='{_model?.Celular ?? ""}', Observaciones='{_model?.ObservacionesAdicionalesTrimmed ?? ""}'");
             if (FormularioValido())
             {
                 await Log("AlHacerClicEnviar", "Válido -> se abre WhatsApp");
@@ -113,7 +132,7 @@
             }
             _errorsNombre = string.IsNullOrWhiteSpace(_model?.Nombre);
             _errorsLocalidad = string.IsNullOrWhiteSpace(_model?.Localidad);
-            _errorsCelular = string.IsNullOrWhiteSpace(_model?.Celular);
+            _errorsCelular = _model?.CelularSoloDigitos?.Length != ContactoModel.CelularDigitsLength;
             await Log("AlHacerClicEnviar", $"Errores: Nombre={_errorsNombre}, Localidad={_errorsLocalidad}, Celular={_errorsCelular}");
             StateHasChanged();
         }
@@ -126,8 +145,66 @@
 
     private class ContactoModel
     {
-        public string Nombre { get; set; } = "";
-        public string Localidad { get; set; } = "";
-        public string Celular { get; set; } = "";
+        public const int MaxObservacionesLength = 100;
+        public const int CelularDigitsLength = 10;
+
+        private string _nombre = "";
+        private string _localidad = "";
+        private string _celularDigits = "";
+
+        public string Nombre
+        {
+            get => _nombre;
+            set => _nombre = SoloTexto(value ?? "");
+        }
+
+        public string Localidad
+        {
+            get => _localidad;
+            set => _localidad = SoloTexto(value ?? "");
+        }
+
+        public string Domicilio { get; set; } = "";
+
+        public string Celular
+        {
+            get => FormatearCelular(_celularDigits);
+            set => _celularDigits = SoloDigitos(value ?? "").Length > CelularDigitsLength
+                ? SoloDigitos(value).Substring(0, CelularDigitsLength)
+                : SoloDigitos(value ?? "");
+        }
+
+        public string CelularSoloDigitos => _celularDigits;
+
+        private string _observacionesAdicionales = "";
+
+        public string ObservacionesAdicionales
+        {
+            get => _observacionesAdicionales;
+            set => _observacionesAdicionales = value?.Length > MaxObservacionesLength
+                ? value.Substring(0, MaxObservacionesLength)
+                : (value ?? "");
+        }
+
+        public string ObservacionesAdicionalesTrimmed => ObservacionesAdicionales?.Trim() ?? "";
+
+        private static string SoloTexto(string value)
+        {
+            if (string.IsNullOrEmpty(value)) return "";
+            return new string(value.Where(c => char.IsLetter(c) || c == ' ' || c == '\'' || c == '-').ToArray());
+        }
+
+        private static string SoloDigitos(string value)
+        {
+            if (string.IsNullOrEmpty(value)) return "";
+            return new string(value.Where(char.IsDigit).ToArray());
+        }
+
+        private static string FormatearCelular(string digitos)
+        {
+            if (string.IsNullOrEmpty(digitos)) return "";
+            if (digitos.Length <= 4) return digitos;
+            return digitos.Substring(0, 4) + "-" + digitos.Substring(4);
+        }
     }
 }
