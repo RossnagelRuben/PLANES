@@ -17,18 +17,6 @@
              height="160"
              loading="lazy" />
     </div>
-    <div class="csj-plan-card__price">
-        <span class="csj-plan-card__price-tag">
-            @if (!string.IsNullOrEmpty(Plan.PriceSmall))
-            {
-                <small>@Plan.PriceSmall</small> @Plan.PriceLabel
-            }
-            else
-            {
-                @Plan.PriceLabel
-            }
-        </span>
-    </div>
     <div class="csj-plan-card__cta">
         <a href="@(string.IsNullOrEmpty(Plan.WhatsappMessage) ? Config.WhatsappPlansUrl : WhatsAppHelper.BuildApiWhatsAppUrl(Config.WhatsappPlansPhone, Plan.WhatsappMessage))"
            class="csj-btn"

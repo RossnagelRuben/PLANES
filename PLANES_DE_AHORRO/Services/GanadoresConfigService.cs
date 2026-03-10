@@ -7,45 +7,46 @@ using PLANES_DE_AHORRO.Models;
 /// </summary>
 public class GanadoresConfigService : IGanadoresConfig
 {
-    private const string BaseUrl = "https://artemis.clubsanjorge.com.ar/images/winners";
+    /// <summary>Imágenes locales en wwwroot/Ganadores (raíz del proyecto).</summary>
+    private const string BasePath = "/Ganadores";
 
     public IReadOnlyList<Ganador> GetGanadores() => new List<Ganador>
     {
         new()
         {
-            Nombre = "Bascunan Carlos Placido",
-            ImagenUrl = $"{BaseUrl}/714092.webp",
-            Cuota = "54",
-            Localidad = "Zapala/Neuquen",
+            Nombre = "Lamera Laura",
+            ImagenUrl = $"{BasePath}/ganador1.jpg.jpeg",
+            Cuota = "6",
+            Localidad = "Jardin America",
             FechaAdjudicacion = "29-11-2025",
-            Premio = "Ford Ranger 4x2 cabina doble"
+            Premio = "Toyota Yaris"
         },
         new()
         {
-            Nombre = "Condori Joaquin Calixto",
-            ImagenUrl = $"{BaseUrl}/806411.webp",
-            Cuota = "1",
-            Localidad = "La Quiaca/Jujuy",
+            Nombre = "Liz Maribel",
+            ImagenUrl = $"{BasePath}/ganador2.jpg.jpeg",
+            Cuota = "29",
+            Localidad = "Puerto Piray",
             FechaAdjudicacion = "29-11-2025",
-            Premio = "Toyota Hilux 4x2 cabina doble"
+            Premio = "Toyota Hilux 4x2"
         },
         new()
         {
-            Nombre = "Encina Juan Ramon",
-            ImagenUrl = $"{BaseUrl}/799106.webp",
-            Cuota = "3",
-            Localidad = "Barranqueras/Chaco",
-            FechaAdjudicacion = "25-10-2025",
-            Premio = "Toyota Hilux 4x4"
+            Nombre = "Liz Maribel",
+            ImagenUrl = $"{BasePath}/ganador3.jpg.jpeg",
+            Cuota = "29",
+            Localidad = "Puerto Piray",
+            FechaAdjudicacion = "29-11-2025",
+            Premio = "Toyota Hilux 4x2"
         },
         new()
         {
-            Nombre = "Jofre Monica Viviana",
-            ImagenUrl = $"{BaseUrl}/728824.webp",
-            Cuota = "41",
-            Localidad = "Moron/Buenos Aires",
+            Nombre = "Vazquez Marcelo",
+            ImagenUrl = $"{BasePath}/ganador4.jpg.jpeg",
+            Cuota = "4",
+            Localidad = "Irigoyen",
             FechaAdjudicacion = "29-11-2025",
-            Premio = "Chevrolet Onix Joy"
+            Premio = "Honda Tornado"
         }
     };
 }
